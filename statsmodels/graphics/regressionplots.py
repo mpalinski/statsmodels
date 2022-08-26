@@ -430,9 +430,9 @@ def plot_partregress(endog, exog_i, exog_others, data=None,
 
     if x_axis_endog_name == 'y':  # for no names regression will just get a y
         x_axis_endog_name = 'x'  # this is misleading, so use x
-    ax.set_xlabel("e(%s | X)" % x_axis_endog_name)
-    ax.set_ylabel("e(%s | X)" % y_axis_endog_name)
-    ax.set_title('Partial Regression Plot', **title_kwargs)
+    ax.set_xlabel("%s" % x_axis_endog_name)
+    ax.set_ylabel("%s" % y_axis_endog_name)
+    ax.set_title('', **title_kwargs)
 
     # NOTE: if we want to get super fancy, we could annotate if a point is
     # clicked using this widget
