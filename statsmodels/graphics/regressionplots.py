@@ -300,7 +300,8 @@ def _partial_regression(endog, exog_i, exog_others):
 
 
 def plot_partregress(endog, exog_i, exog_others, data=None,
-                     title_kwargs={}, obs_labels=True, label_kwargs={},
+                     # title_kwargs={},
+                     obs_labels=True, label_kwargs={},
                      ax=None, ret_coords=False, eval_env=1, **kwargs):
     """Plot partial regression for a single regressor.
 
@@ -432,7 +433,7 @@ def plot_partregress(endog, exog_i, exog_others, data=None,
         x_axis_endog_name = 'x'  # this is misleading, so use x
     ax.set_xlabel("%s" % x_axis_endog_name.replace("Q('",'').replace("'","").replace(")",""))
     ax.set_ylabel("%s" % y_axis_endog_name.replace("Q('",'').replace("'","").replace(")",""))
-    ax.set_title('', **title_kwargs)
+    # ax.set_title('', **title_kwargs)
 
     # NOTE: if we want to get super fancy, we could annotate if a point is
     # clicked using this widget
@@ -544,8 +545,8 @@ def plot_partregress_grid(results, exog_idx=None, grid=None, fig=None):
     ncols = 1 if nrows == len(exog_idx) else 2
     if grid is not None:
         nrows, ncols = grid
-    if ncols > 1:
-        title_kwargs = {"fontdict": {"fontsize": 'small'}}
+    # if ncols > 1:
+    #     title_kwargs = {"fontdict": {"fontsize": 'small'}}
 
     # for indexing purposes
     other_names = np.array(results.model.exog_names)
@@ -557,7 +558,8 @@ def plot_partregress_grid(results, exog_idx=None, grid=None, fig=None):
         ax = fig.add_subplot(nrows, ncols, i + 1)
         plot_partregress(y, pandas.Series(exog[:, idx],
                                           name=other_names[idx]),
-                         exog_others, ax=ax, title_kwargs=title_kwargs,
+                         exog_others, ax=ax,
+                         # title_kwargs=title_kwargs,
                          obs_labels=False)
         ax.set_title("")
 
