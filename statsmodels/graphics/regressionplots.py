@@ -413,7 +413,7 @@ def plot_partregress(endog, exog_i, exog_others, data=None,
     if RHS_isemtpy:
         endog = np.asarray(endog)
         exog_i = np.asarray(exog_i)
-        ax.plot(endog, exog_i, 'o', **kwargs)
+        ax.plot(endog, exog_i, '.', **kwargs)
         fitted_line = OLS(endog, exog_i).fit()
         x_axis_endog_name = 'x' if isinstance(exog_i, np.ndarray) else exog_i.name
         y_axis_endog_name = 'y' if isinstance(endog, np.ndarray) else endog.design_info.column_names[0]
@@ -424,7 +424,7 @@ def plot_partregress(endog, exog_i, exog_others, data=None,
         yaxis_resid = res_yaxis.resid
         x_axis_endog_name = res_xaxis.model.endog_names
         y_axis_endog_name = res_yaxis.model.endog_names
-        ax.plot(xaxis_resid, yaxis_resid, 'o', **kwargs)
+        ax.plot(xaxis_resid, yaxis_resid, '.', **kwargs,alpha=.4)
         fitted_line = OLS(yaxis_resid, xaxis_resid).fit()
 
     fig = abline_plot(0, fitted_line.params[0], color='k', ax=ax)
